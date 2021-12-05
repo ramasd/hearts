@@ -9,5 +9,5 @@ return [
     'SUITS' => $const["suits"],
     'TYPES' => $const["types"],
     'CARDS' => array_fill_keys($const["suits"], $const["types"]),
-    'PLAYED_CARDS_AMOUNT' => ['heart' => 0, 'diamond' => 0, 'spade' => 0, 'club' => 0]
+    'INITIAL_PLAYED_CARDS_AMOUNT' => ['heart' => 0, 'diamond' => 0, 'spade' => 0, 'club' => 0]
 ];

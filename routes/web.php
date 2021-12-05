@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cards/{number?}/{table?}', [CardController::class, 'index']);
+Route::get('/cards', [CardController::class, 'index']);

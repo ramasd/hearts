@@ -81,23 +81,23 @@
     <h1>Played Cards</h1>
     <div>
         <table>
-            @foreach($cards as $suit => $types)
+            @foreach(config("constants.CARDS") as $suit => $types)
                 <tr>
                     @foreach($types as $type)
                         @php $card = $suit . "_" . $type; @endphp
                         <td class="align-top">
                             <div>
                                 <div>
-                                    <img class="card-size {{ array_key_exists($card, $playedCards) ? 'border' : "opacity" }}"  src="{{ url("images/cards/$card.svg") }}" alt="{{$card}}"/>
+                                    <img class="card-size {{ array_key_exists($card, $statistics['played_cards']) ? 'border' : "opacity" }}"  src="{{ url("images/cards/$card.svg") }}" alt="{{$card}}"/>
                                 </div>
-                                @if(isset($playedCards[$card]))
-                                    <div class="player-name" style="color:{{$nicknameColors[$playedCards[$card]]}}">{{ $playedCards[$card] }}</div>
+                                @if(isset($statistics['played_cards'][$card]))
+                                    <div class="player-name" style="color:{{$playerColors[$statistics['played_cards'][$card]]}}">{{ $statistics['played_cards'][$card] }}</div>
                                 @endif
                             </div>
                         </td>
                     @endforeach
                     <td>
-                        <div class="played-cards-amount">{{$playedCardsAmount[$suit]}}<span>/13</span></div>
+                        <div class="played-cards-amount">{{$statistics['played_cards_amount'][$suit]}}<span>/13</span></div>
                     </td>
                 </tr>
             @endforeach
@@ -105,13 +105,13 @@
 
         <table>
             <tr>
-                <th>Player Name</th>
+                <th>Player</th>
                 <th>Points</th>
             </tr>
-            @foreach($playerPoints as $player => $points)
+            @foreach($statistics['player_points'] as $player => $points)
                 <tr>
-                    <td style="color:{{$nicknameColors[$player]}};" >{{ $player }}:</td>
-                    <td style="border: solid;background-color:black;color:{{$nicknameColors[$player]}};" class="player-points">{{$points}}</td>
+                    <td style="color:{{$playerColors[$player]}};" >{{ $player }}:</td>
+                    <td style="border: solid;background-color:black;color:{{$playerColors[$player]}};" class="player-points">{{$points}}</td>
                 </tr>
             @endforeach
         </table>
